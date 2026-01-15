@@ -70,3 +70,77 @@ jobs:
             exit 1
           fi
           echo "Versions match: $INSTALL_VERSION"
+
+  test-installer:
+    name: Test Installer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Start local file server
+        run: |
+          python3 -m http.server 8080 &
+          sleep 2
+
+      - name: Create test installer pointing to local server
+        run: |
+          sed 's|https://raw.githubusercontent.com/ghiret/claudio/main|http://localhost:8080|g' install.sh > test-install.sh
+          chmod +x test-install.sh
+
+      - name: Test install to default location
+        run: |
+          ./test-install.sh --yes --no-mcp
+
+          echo "Checking installed files..."
+          test -f ~/.claudio/CLAUDE.md || (echo "CLAUDE.md missing" && exit 1)
+          test -f ~/.claudio/.claudio-version || (echo ".claudio-version missing" && exit 1)
+          test -d ~/.claudio/.claude/skills/today || (echo "skills/today missing" && exit 1)
+          test -d ~/.claudio/.claude/skills/add-task || (echo "skills/add-task missing" && exit 1)
+          test -d ~/.claudio/.claude/skills/stuck || (echo "skills/stuck missing" && exit 1)
+          test -d ~/.claudio/.claude/skills/review || (echo "skills/review missing" && exit 1)
+          test -d ~/.claudio/.claude/scripts || (echo "scripts missing" && exit 1)
+          test -d ~/.claudio/.devcontainer || (echo "devcontainer missing" && exit 1)
+          test -d ~/.claudio/history || (echo "history missing" && exit 1)
+
+          echo "✓ Default install successful"
+
+      - name: Clean up for next test
+        run: rm -rf ~/.claudio
+
+      - name: Test install to custom directory
+        run: |
+          ./test-install.sh --yes --no-mcp --dir=/tmp/claudio-test
+
+          echo "Checking installed files in custom dir..."
+          test -f /tmp/claudio-test/CLAUDE.md || (echo "CLAUDE.md missing" && exit 1)
+          test -f /tmp/claudio-test/.claudio-version || (echo ".claudio-version missing" && exit 1)
+          test -d /tmp/claudio-test/.claude/skills || (echo "skills missing" && exit 1)
+
+          echo "✓ Custom dir install successful"
+
+      - name: Test install to current directory
+        run: |
+          mkdir -p /tmp/here-test && cd /tmp/here-test
+          $GITHUB_WORKSPACE/test-install.sh --yes --no-mcp --here
+
+          echo "Checking installed files in current dir..."
+          test -f /tmp/here-test/CLAUDE.md || (echo "CLAUDE.md missing" && exit 1)
+          test -d /tmp/here-test/.claude/skills || (echo "skills missing" && exit 1)
+
+          echo "✓ --here install successful"
+
+      - name: Test update (re-run installer)
+        run: |
+          # First install
+          ./test-install.sh --yes --no-mcp --dir=/tmp/update-test
+
+          # Create a file in history to ensure it's preserved
+          echo "test data" > /tmp/update-test/history/test.md
+
+          # Run installer again (update)
+          ./test-install.sh --yes --no-mcp --dir=/tmp/update-test
+
+          # Verify history was preserved
+          test -f /tmp/update-test/history/test.md || (echo "history was not preserved!" && exit 1)
+
+          echo "✓ Update preserves user data"
