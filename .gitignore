@@ -15,3 +15,6 @@ history/
 # OS files
 .DS_Store
 *.zip
+
+# Version file (only in installed copies)
+.claudio-version
