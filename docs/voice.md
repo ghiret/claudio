@@ -69,7 +69,7 @@ sequenceDiagram
 
 The Kokoro server shows a live terminal UI:
 
-```
+```text
 ╭─────────────────────────────────────────────────────────────╮
 │  🎙️  Kokoro TTS Server                                      │
 │                                                             │
@@ -95,6 +95,7 @@ The Kokoro server shows a live terminal UI:
 | `am_michael` | Male, warm |
 
 Change voice:
+
 ```bash
 ~/.claudio/.claude/scripts/kokoro-server.sh ~/.claudio af_bella
 ```
@@ -125,16 +126,19 @@ sequenceDiagram
 1. Get an API key from [elevenlabs.io](https://elevenlabs.io)
 
 2. Add to `~/.claudio/.env`:
-   ```
+
+   ```text
    ELEVEN_API_KEY=your_key_here
    ```
 
 3. Start PulseAudio on your Mac:
+
    ```bash
    pulseaudio --load=module-native-protocol-tcp --exit-idle-time=-1
    ```
 
 4. Test:
+
    ```bash
    ~/.claudio/.claude/scripts/test-elevenlabs.sh "Hello from ElevenLabs"
    ```
@@ -172,6 +176,7 @@ pulseaudio --load=module-native-protocol-tcp --exit-idle-time=-1
 ```
 
 Test:
+
 ```bash
 ~/.claudio/.claude/scripts/speak.sh "Hello from espeak"
 ```
@@ -181,11 +186,13 @@ Test:
 ### No audio on Mac
 
 1. Check PulseAudio is running:
+
    ```bash
    pulseaudio --check && echo "Running" || echo "Not running"
    ```
 
 2. Restart PulseAudio:
+
    ```bash
    pulseaudio --kill
    pulseaudio --load=module-native-protocol-tcp --exit-idle-time=-1

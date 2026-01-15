@@ -24,6 +24,7 @@ curl -sL https://raw.githubusercontent.com/ghiret/claudio/main/install.sh | bash
 ```
 
 The installer will:
+
 - Download skills, scripts, and devcontainer to `~/.claudio`
 - Walk you through Trello API setup
 - Configure the MCP in Claude Code
@@ -77,7 +78,7 @@ curl -sL https://raw.githubusercontent.com/ghiret/claudio/main/install.sh | bash
 
 Create a board with these columns:
 
-```
+```text
 To Do │ Blocked │ Waiting On │ In Progress │ Done
 ```
 
@@ -102,6 +103,7 @@ Claudio can speak! Three TTS engines available:
 | **espeak-ng** | ⭐⭐ | Instant | Built into devcontainer |
 
 Quick setup for Kokoro (recommended):
+
 ```bash
 ~/.claudio/.claude/scripts/setup-speech.sh
 ~/.claudio/.claude/scripts/kokoro-server.sh ~/.claudio
@@ -111,7 +113,7 @@ See [docs/voice.md](docs/voice.md) for full setup instructions and troubleshooti
 
 ## Project Structure (After Install)
 
-```
+```text
 ~/.claudio/
 ├── .claude/
 │   ├── skills/           # Workflow definitions

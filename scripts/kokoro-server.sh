@@ -67,6 +67,7 @@ echo ""
 
 # Activate venv
 echo -e "${BLUE}Activating virtual environment...${NC}"
+# shellcheck source=/dev/null
 source "$KOKORO_DIR/venv/bin/activate"
 echo -e "${GREEN}✅ Venv activated${NC}"
 echo ""

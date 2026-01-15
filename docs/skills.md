@@ -43,7 +43,7 @@ flowchart TB
 | **Does** | Fetches board, summarizes top priorities, surfaces stale items |
 | **Full docs** | [`skills/today/SKILL.md`](../skills/today/SKILL.md) |
 
-```
+```text
 You: today
 
 Claudio: Good morning! Here's your focus for today:
@@ -70,7 +70,7 @@ Claudio: Good morning! Here's your focus for today:
 | **Does** | Clarifies if needed, creates card with title, description, labels, list |
 | **Full docs** | [`skills/add-task/SKILL.md`](../skills/add-task/SKILL.md) |
 
-```
+```text
 You: remind me to call the dentist about the kids' checkups
 
 Claudio: Created card in To Do:
@@ -90,7 +90,7 @@ Claudio: Created card in To Do:
 | **Does** | Diagnoses blocker, breaks into steps, preps phone scripts |
 | **Full docs** | [`skills/stuck/SKILL.md`](../skills/stuck/SKILL.md) |
 
-```
+```text
 You: I'm stuck on disputing the parking fine
 
 Claudio: Let's break this down. What's blocking you?
@@ -125,7 +125,7 @@ Want me to move this to In Progress?
 | **Does** | Finds stale tasks, archives done items, suggests actions |
 | **Full docs** | [`skills/review/SKILL.md`](../skills/review/SKILL.md) |
 
-```
+```text
 You: what have I forgotten?
 
 Claudio: Let's review your board:
@@ -176,13 +176,15 @@ stateDiagram-v2
 See [CONTRIBUTING.md](../CONTRIBUTING.md) for how to add new skills.
 
 Basic structure:
-```
+
+```text
 skills/
 └── my-skill/
     └── SKILL.md      # Workflow definition
 ```
 
 Every skill needs:
+
 1. **Triggers** - When to use it
 2. **Workflow** - Step-by-step what to do
 3. **Examples** - Input/output samples

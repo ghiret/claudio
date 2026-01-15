@@ -109,6 +109,7 @@ echo -e "${GREEN}✅ Virtual environment ready${NC}"
 
 echo ""
 echo -e "${BLUE}Installing Python packages...${NC}"
+# shellcheck source=/dev/null
 source venv/bin/activate
 pip install --upgrade pip --quiet
 pip install kokoro-onnx soundfile sounddevice --quiet

@@ -15,7 +15,10 @@ PROJECT_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")"
 
 # Load .env
 if [ -f "$PROJECT_DIR/.env" ]; then
-    export $(grep -v '^#' "$PROJECT_DIR/.env" | xargs)
+    set -a
+    # shellcheck source=/dev/null
+    source <(grep -v '^#' "$PROJECT_DIR/.env")
+    set +a
 fi
 
 if [ -z "$ELEVEN_API_KEY" ]; then

@@ -5,12 +5,14 @@ Thanks for your interest in making Claudio better! Here's how to contribute.
 ## Development Setup
 
 1. **Clone the repo** (don't use the installer for development):
+
    ```bash
    git clone https://github.com/ghiret/claudio.git
    cd claudio
    ```
 
 2. **Set up pre-commit hooks** (recommended):
+
    ```bash
    pip install pre-commit
    pre-commit install
@@ -33,13 +35,14 @@ Every PR runs these checks automatically:
 | **Version consistency** | Ensures version numbers match |
 
 Run locally with pre-commit:
+
 ```bash
 pre-commit run --all-files
 ```
 
 ## Repository Structure
 
-```
+```text
 claudio/
 ├── skills/                 # Skill definitions (installed to .claude/skills/)
 │   ├── today/SKILL.md
@@ -58,11 +61,13 @@ claudio/
 ## Adding a New Skill
 
 1. Create a new directory under `skills/`:
+
    ```bash
    mkdir skills/my-skill
    ```
 
 2. Create `skills/my-skill/SKILL.md` following this structure:
+
    ```markdown
    # Skill: my-skill
 
