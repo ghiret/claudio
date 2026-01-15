@@ -4,7 +4,7 @@ set -e
 # Claudio - Your AI Butler
 # https://github.com/ghiret/claudio
 
-VERSION="1.0.0"
+VERSION="1.0.0" # x-release-please-version
 REPO_URL="https://github.com/ghiret/claudio"
 RAW_URL="https://raw.githubusercontent.com/ghiret/claudio/main"
 
