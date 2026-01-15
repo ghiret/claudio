@@ -147,3 +147,7 @@ MIT - See [LICENSE](LICENSE)
 ---
 
 *Claudio: Because everyone deserves a butler.* 🎩
+
+<p align="center">
+  <sub>Built entirely with <a href="https://claude.ai/code">Claude Code</a> 🤖</sub>
+</p>
