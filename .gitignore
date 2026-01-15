@@ -1,0 +1,17 @@
+# API keys and secrets
+.env
+
+# Local Claude settings
+.claude/settings.json
+.claude/settings.local.json
+
+# Personal history
+history/
+
+# TTS queue files
+.tts-queue
+.kokoro-queue
+
+# OS files
+.DS_Store
+*.zip
