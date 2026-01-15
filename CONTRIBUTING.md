@@ -10,9 +10,32 @@ Thanks for your interest in making Claudio better! Here's how to contribute.
    cd claudio
    ```
 
-2. **Open in VS Code with the devcontainer** (optional but recommended)
+2. **Set up pre-commit hooks** (recommended):
+   ```bash
+   pip install pre-commit
+   pre-commit install
+   ```
 
-3. **Set up Trello MCP** in `~/.claude/settings.json` if you haven't already
+3. **Open in VS Code with the devcontainer** (optional but recommended)
+
+4. **Set up Trello MCP** in `~/.claude/settings.json` if you haven't already
+
+## CI Checks
+
+Every PR runs these checks automatically:
+
+| Check | What it does |
+|-------|--------------|
+| **ShellCheck** | Lints bash scripts for errors |
+| **markdownlint** | Ensures consistent markdown |
+| **Link checker** | Verifies documentation links work |
+| **Syntax validation** | Checks all scripts have valid syntax |
+| **Version consistency** | Ensures version numbers match |
+
+Run locally with pre-commit:
+```bash
+pre-commit run --all-files
+```
 
 ## Repository Structure
 
